@@ -1,3 +1,4 @@
+
 name: CI/CD
 
 on:
@@ -19,7 +20,6 @@ jobs:
           chmod +x gradlew
           ./gradlew test
 
-  # ↓ 여기부터 추가 (test와 같은 칸에서 시작)
   build:
     needs: test
     if: github.event_name == 'push'
@@ -51,7 +51,7 @@ jobs:
       - uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
+          username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             IMAGE=${{ secrets.DOCKER_USERNAME }}/likelion-cicd:${{ github.sha }}
