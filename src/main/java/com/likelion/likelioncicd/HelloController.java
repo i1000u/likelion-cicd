@@ -12,6 +12,6 @@ public class HelloController {
 
     @GetMapping("/")
     public String hello() {
-        return "Hello, 전천우! v1 (" + color + ")";
+        return "Hello, World! v1 (" + color + ")";
     }
 }
